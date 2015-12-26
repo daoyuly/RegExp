@@ -21,3 +21,8 @@ message = prefix + template.replace(/\{\d+\}/g, function(match) {
          return match;
        });
 ```
+
+
+2. demo
+
+> var REGEX_STRING_REGEXP = /^\/(.+)\/([a-z]*)$/;
