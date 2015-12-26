@@ -8,7 +8,8 @@
 ###angularjs （v1.3.9-local+sha.a3c3bf3）
 
 - 查找格式 {123} 中数字
-> /\{\d+\}/g
+
+ > /\{\d+\}/g
 
 ```
 message = prefix + template.replace(/\{\d+\}/g, function(match) {
