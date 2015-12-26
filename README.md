@@ -8,8 +8,7 @@
 ###angularjs （v1.3.9-local+sha.a3c3bf3）
 
 - 查找格式 {123} 中数字
-
- > /\{\d+\}/g
+> /\{\d+\}/g
 
 ```
 message = prefix + template.replace(/\{\d+\}/g, function(match) {
@@ -64,6 +63,106 @@ template.replace(/^\/(.+)\/([a-z]*)$/, function(match) {
 
 - 查找defalt关键字
 > var DEFAULT_REGEXP = /(\s+|^)default(\s+|$)/;
+
+- 查找单词
+> $scope.word = /^\s*\w*\s*$/;
+
+
+- 常数检查
+> var CONSTANT_VALUE_REGEXP = /^(true|false|\d+)$/;
+
+
+- 匹配ng-repeat表达式
+>var match = expression.match(/^\s*([\s\S]+?)\s+in\s+([\s\S]+?)(?:\s+as\s+([\s\S]+?))?(?:\s+track\s+by\s+([\s\S]+?))?\s*$/);
+
+```
+console.log('begin');
+var expression = "(s,a) in list track by index";
+var match = expression.match(/^\s*([\s\S]+?)\s+in\s+([\s\S]+?)(?:\s+as\s+([\s\S]+?))?(?:\s+track\s+by\s+([\s\S]+?))?\s*$/);
+console.log(match)
+
+```
+
+- 匹配 单词 或者 （key，valye）形式
+> match = lhs.match(/^(?:(\s*[\$\w]+)|\(\s*([\$\w]+)\s*,\s*([\$\w]+)\s*\))$/);
+
+- 匹配$$,$a,AA,A1等变量
+>/^[$a-zA-Z_][$a-zA-Z0-9_]*$/
+
+-匹配关键字
+>/^(null|undefined|this|\$index|\$first|\$middle|\$last|\$even|\$odd|\$parent)$/
+
+- ngOptions
+>  var NG_OPTIONS_REGEXP = /^\s*([\s\S]+?)(?:\s+as\s+([\s\S]+?))?(?:\s+group\s+by\s+([\s\S]+?))?\s+for\s+(?:([\$\w][\$\w]*)|(?:\(\s*([\$\w][\$\w]*)\s*,\s*([\$\w][\$\w]*)\s*\)))\s+in\s+([\s\S]+?)(?:\s+track\s+by\s+([\s\S]+?))?$/,
+
+
+
+- 正则中元字符的反转义处理。这种方式很精巧
+>s.replace(/([-()\[\]{}+?*.$\^|,:#<!\\])/g, '\\$1')
+
+[解释](http://docs.closure-library.googlecode.com/git/local_closure_goog_string_string.js.source.html#line1021)
+
+
+```
+ return s.replace(/([-()\[\]{}+?*.$\^|,:#<!\\])/g, '\\$1').
+           replace(/\x08/g, '\\x08');
+```
+```
+console.log('begin');
+var expression = "([-()\[\]{}+?*.$\^|,:#<!\\])";
+var match = expression.replace(/([-()\[\]{}+?*.$\^|,:#<!\\])/g, '\\$1')
+console.log(match)
+```
+- 匹配html开始标签
+> /^(<[^>]+>)/
+
+```
+console.log('begin');
+var expression = "<a>FE</a>";
+var match = expression.match(/^(<[^>]+>)/);
+// 考虑不用保存子表达式
+var match = expression.match(/^(?:<[^>]+>)/);
+console.log(match)`
+```
+
+- 匹配URL中 +
+>/\+/g
+
+```
+key_value = keyValue.replace(/\+/g,'%20').split('=');
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
