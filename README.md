@@ -8,6 +8,7 @@
 ###angularjs （v1.3.9-local+sha.a3c3bf3）
 
 - 查找格式 {123} 中数字
+
 > /\{\d+\}/g
 
 ```
@@ -114,6 +115,7 @@ var match = expression.replace(/([-()\[\]{}+?*.$\^|,:#<!\\])/g, '\\$1')
 console.log(match)
 ```
 - 匹配html开始标签
+
 > /^(<[^>]+>)/
 
 ```
@@ -126,6 +128,7 @@ console.log(match)`
 ```
 
 - 匹配URL中 +
+
 >/\+/g
 
 ```
